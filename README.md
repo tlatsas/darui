@@ -20,7 +20,7 @@ is constantly referring to things or events as being "dull".
 Darui uses the [JSON](http://json.org/example.html) file format for its configuration
 file. It expects a file named `darui.json` in one of the following paths:
 
-* path stored in $XDG_CONFIG_HOME (defaults to ~/.config)
+* path stored in `$XDG_CONFIG_HOME` (defaults to ~/.config)
 * path from where program runs
 
 Sample configuration file:
@@ -45,9 +45,9 @@ Sample configuration file:
         ]
     }
 
-The first entry, matches all archlinux packages with "gstreamer", "udev" or "sqlite" in their name.
+The first entry, matches all archlinux packages with `gstreamer`, `udev` or `sqlite` in their name.
 The second entry matches all articles at [H-Online](http://www.h-online.com/open/)
-relevant to new linux kernel releases. Note that searches are *not* case-sensitive.
+relevant to new linux kernel releases. Note that searches are **not** case-sensitive.
 
 The "from" and "to" field are used for email sending and are self explanatory.
 
