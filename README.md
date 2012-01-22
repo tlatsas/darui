@@ -24,28 +24,27 @@ file. It expects a file named `darui.json` in one of the following paths:
 * path from where program runs
 
 Sample configuration file:
-```
-{
-    "email": {
-        "from": "",
-        "to": ""
-    },
-    "feeds": [
-        { "rss" : "http://www.archlinux.org/feeds/packages/", "rules": [
-            "gstreamer",
-            "udev",
-            "sqlite"
-            ]
-        },
-        { "rss" : "http://rss.feedsportal.com/c/32569/f/491735/index.rss", "rules": [
-            "kernel log",
-            "new in linux"
-            ]
-        }
-    ]
-}
 
-```
+    {
+        "email": {
+            "from": "",
+            "to": ""
+        },
+        "feeds": [
+            { "rss" : "http://www.archlinux.org/feeds/packages/", "rules": [
+                "gstreamer",
+                "udev",
+                "sqlite"
+                ]
+            },
+            { "rss" : "http://rss.feedsportal.com/c/32569/f/491735/index.rss", "rules": [
+                "kernel log",
+                "new in linux"
+                ]
+            }
+        ]
+    }
+
 The first entry, matches all archlinux packages with "gstreamer", "udev" or "sqlite" in their name.
 The second entry matches all articles at [H-Online](http://www.h-online.com/open/)
 relevant to new linux kernel releases. Note that searches are *not* case-sensitive.
