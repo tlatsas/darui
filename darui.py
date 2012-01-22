@@ -22,7 +22,7 @@ from datetime import datetime
 def read_config():
     """Read JSON formated configuration file
 
-    searches for `darui.json` in path defined in $XDG_CONFIG_HOME environmental
+    searches for `darui.json` in path defined in $XDG_CONFIG_HOME environment
     variable (defaults to ~/.config) and in the path from where program runs
     if no configuration file is found or on open/parse error returns None
     """
