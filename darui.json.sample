@@ -1,0 +1,19 @@
+{
+    "email": {
+        "from": "",
+        "to": ""
+    },
+    "feeds": [
+        { "rss" : "http://www.archlinux.org/feeds/packages/", "rules": [
+            "gstreamer",
+            "udev",
+            "sqlite"
+            ]
+        },
+        { "rss" : "http://rss.feedsportal.com/c/32569/f/491735/index.rss", "rules": [
+            "kernel log",
+            "new in linux"
+            ]
+        }
+    ]
+}

@@ -1,0 +1,4 @@
+* add support for YAML configuration files (low priority)
+* add support for command line parameters
+* hold (somewhere) a .state file with feed dates to
+  avoid duplicate results in emails
