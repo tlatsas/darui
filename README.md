@@ -1,7 +1,7 @@
 Darui
 -----
 
-#### Introduction
+### Introduction
 
 Darui is a simple program written in python. It parses rss feeds and matches
 feed entries against supplied keywords. It undertakes to do the tedious work
@@ -10,12 +10,12 @@ python's smtplib.
 It is named after an [anime character](http://naruto.wikia.com/wiki/Darui) who
 is constantly referring to things or events as being "dull".
 
-#### Dependencies
+### Dependencies
 
 * python >= 3
 * feedparser >= 5.1
 
-#### Configuration
+### Configuration
 
 Darui uses the [JSON](http://json.org/example.html) file format for its configuration
 file. It expects a file named `darui.json` in one of the following paths:
