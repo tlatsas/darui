@@ -14,9 +14,27 @@ except:
 import os
 import re
 import smtplib
+import argparse
 from json import load
 from email.mime.text import MIMEText
 from datetime import datetime
+
+def cmd_parse():
+    """Parse command line arguments"""
+    parser = argparse.ArgumentParser(
+        description="Parses rss feeds and emails entries matched against supplied keywords",
+        version="0.6")
+
+    parser.add_argument("-p", "--print", action="store_true", default=False,
+        help="Print results to stdout [default off]")
+
+    parser.add_argument("-f", "--file", dest="cfg_file", default=None,
+        help="Override standard search path and use specified configuration file")
+
+    parser.add_argument("--no-email", action="store_true", default=False,
+        help="Do not send email (useful for debug in conjunction with -p)")
+
+    return parser.parse_args()
 
 
 def read_config():
@@ -119,12 +137,24 @@ class Darui (object):
 
 
 if __name__ == "__main__":
+    # parse command line arguments
+    args = cmd_parse()
+
+    # read config file
     cfg = read_config()
     if cfg is None:
         print("Cannot find suitable configuration file, aborting...")
         exit(1)
+
+    # parse our feeds
     darui = Darui(cfg)
     darui.parse()
-    #darui.print_results()
+
+    if args.print is True:
+        darui.print_results()
+
+    if args.no_email is True:
+        exit(0)
+
     darui.email_results()
 
