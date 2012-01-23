@@ -19,11 +19,13 @@ from json import load
 from email.mime.text import MIMEText
 from datetime import datetime
 
+__version__ = "0.6"
+
 def cmd_parse():
     """Parse command line arguments"""
     parser = argparse.ArgumentParser(
         description="Parses rss feeds and emails entries matched against supplied keywords",
-        version="0.6")
+        version=__version__)
 
     parser.add_argument("-p", "--print", action="store_true", default=False,
         help="Print results to stdout [default off]")
