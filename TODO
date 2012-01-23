@@ -1,4 +1,5 @@
 * add support for YAML configuration files (low priority)
-* add support for command line parameters
 * hold (somewhere) a .state file with feed dates to
   avoid duplicate results in emails
+* maybe use a url shortener for links send in emails
+* add better error handling at email_results()
