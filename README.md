@@ -4,11 +4,11 @@ Darui
 ### Introduction
 
 Darui is a simple program written in python. It parses rss feeds and matches
-feed entries against supplied keywords. It undertakes to do the tedious work
-of filtering your rss entries. Matched entries are sent to your email using
+feed entries against supplied keywords. Matched entries are sent to your email using
 python's smtplib.
-It is named after an [anime character](http://naruto.wikia.com/wiki/Darui) who
-is constantly referring to things or events as being "dull".
+It undertakes to do the tedious work of filtering your rss entries, that's why it is
+named after an [anime character](http://naruto.wikia.com/wiki/Darui) who is constantly
+referring to things or events as being "dull".
 
 ### Dependencies
 
