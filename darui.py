@@ -37,22 +37,27 @@ def cmd_parse():
     return parser.parse_args()
 
 
-def read_config():
+def read_config(cfg_file = None):
     """Read JSON formated configuration file
 
     searches for `darui.json` in path defined in $XDG_CONFIG_HOME environment
     variable (defaults to ~/.config) and in the path from where program runs
     if no configuration file is found or on open/parse error returns None
     """
-    config_file = "darui.json"
-    config_list = [ ]
-    xdg = os.getenv("XDG_CONFIG_HOME")
-    if xdg:
-        config_list.append(os.path.join(xdg, config_file))
+    if cfg_file is None:
+        config_filename = "darui.json"
+        config_list = [ ]
 
-    config_list.append(
-        os.path.join(os.path.abspath(os.path.dirname(__file__)), config_file)
-    )
+        xdg = os.getenv("XDG_CONFIG_HOME")
+        if xdg:
+            config_list.append(os.path.join(xdg, config_filename))
+
+        config_list.append(
+            os.path.join(os.path.abspath(os.path.dirname(__file__)), config_filename)
+        )
+    else:
+        # do not search standard paths, use specific file
+        config_list = [cfg_file]
 
     config_contents = None
     for config in config_list:
@@ -141,7 +146,7 @@ if __name__ == "__main__":
     args = cmd_parse()
 
     # read config file
-    cfg = read_config()
+    cfg = read_config(args.cfg_file)
     if cfg is None:
         print("Cannot find suitable configuration file, aborting...")
         exit(1)
