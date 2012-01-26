@@ -18,6 +18,7 @@ import argparse
 from json import load
 from email.mime.text import MIMEText
 from datetime import datetime
+from getpass import getuser
 
 __version__ = "0.6"
 
@@ -81,10 +82,21 @@ def read_config(cfg_file = None):
 
 
 class Darui (object):
-    def __init__(self, cfg):
+
+    def __init__(self, cfg, state_path="/var/tmp"):
         self.cfg = cfg
         self.results = { }
         self.report = ""
+        self.state = ""
+
+        # file to store feed states, defaults to "/var/tmp/[username].darui"
+        try:
+            filename = '.'.join(getuser(), "darui")
+            self.state_file = os.path.join(state_path, filename)
+            self.use_state = True
+        except:
+            self.state_file = ""
+            self.use_state = False
 
     def parse(self):
         """Parse rss feeds and try to match feed titles using regex"""
