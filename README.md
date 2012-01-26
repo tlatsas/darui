@@ -24,18 +24,23 @@ darui.py [-h] [-v] [-p] [-f CFG_FILE] [--no-email]
 #### Options
 
 **-h**, **--help**
+
 Show help message.
 
 **-v**, **--version**
+
 Show version.
 
 **-p**, **--print**
+
 Print results to stdout. Silent by default.
 
 **-f <cfg_file>**, **--file <cfg_file>**
+
 Override standard search path and use specified configuration file.
 
 **--no-mail**
+
 Skip sending email report. Useful for debug in conjunction with **--print**.
 
 ### Configuration
