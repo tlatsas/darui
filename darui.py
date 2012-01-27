@@ -169,8 +169,8 @@ class Darui (object):
         """
         try:
             with open(self.state_file, 'w') as f:
-                for rss, timestamp in self.state.keys():
-                    f.write(';'.join(rss, timestamp))
+                for rss, timestamp in self.state.items():
+                    f.write(';'.join((rss, timestamp)))
                     f.write('\n')
         except:
             # TODO: handle errors
