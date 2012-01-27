@@ -163,6 +163,21 @@ class Darui (object):
         except:
             return
 
+    def _save_state()
+        """save rss url and last parsed time
+
+        file format:
+            url;timestamp\n
+        """
+        try:
+            with open(self.state_file, 'w') as f:
+                for rss, timestamp in self.state.keys():
+                    f.write(';'.join(rss, timestamp))
+                    f.write('\n')
+        except:
+            # TODO: handle errors
+            return
+
 
 if __name__ == "__main__":
     # parse command line arguments
