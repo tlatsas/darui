@@ -1,4 +1,4 @@
-#!/bin/env python
+#!/usr/bin/env python
 
 from sys import exit, version_info
 if version_info[0] < 3:
