@@ -1,7 +1,7 @@
 Darui
 -----
 
-### Introduction
+### Description
 
 Darui is a simple program written in python. It parses rss feeds and matches
 feed entries against supplied keywords. Matched entries are sent to your email using
@@ -27,17 +27,21 @@ darui.py [-h] [-v] [-p] [-f CFG_FILE] [--no-email]
 
 Show help message.
 
+
 `-v`, `--version`
 
 Show version.
+
 
 `-p`, `--print`
 
 Print results to stdout. Silent by default.
 
+
 `-f <cfg_file>`, `--file <cfg_file>`
 
 Override standard search path and use specified configuration file.
+
 
 `--no-mail`
 
@@ -86,6 +90,6 @@ the GNU General Public License as published by the Free Software Foundation vers
 
 A copy of theGNU General Public License can be found in [GNU Licence Page](http://www.gnu.org/licenses/gpl.html)
 
-### Credits
+### Authors
 
 2011-2012 Tasos Latsas
