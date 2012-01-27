@@ -154,6 +154,15 @@ class Darui (object):
                     self.report = ''.join((self.report, ":: ", title, " [", url, "]\n"))
                 self.report = ''.join((self.report, "\n"))
 
+    def _read_state()
+        try:
+            with open(self.state_file) as f:
+                for line in f:
+                    rss, timestamp = line.strip('\n').split(';')
+                    self.state[rss] = timestamp
+        except:
+            return
+
 
 if __name__ == "__main__":
     # parse command line arguments
