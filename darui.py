@@ -66,16 +66,12 @@ def read_config(cfg_file = None):
     for config in config_list:
         if os.path.isfile(config):
             try:
-                fp = open(config, 'r')
-                try:
-                    config_contents = load(fp)
-                except:
-                    print("Error reading configuration file", config)
-                finally:
-                    fp.close()
+                with open(config) as f:
+                    config_contents = load(f)
             except:
                 print("Error opening configuration file", config)
                 return None
+
             return config_contents
 
     return None
