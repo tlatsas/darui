@@ -155,12 +155,14 @@ class Darui (object):
                 self.report = ''.join((self.report, "\n"))
 
     def _read_state()
+        """read rss parsed timestamps into a dictionary"""
         try:
             with open(self.state_file) as f:
                 for line in f:
                     rss, timestamp = line.strip('\n').split(';')
                     self.state[rss] = timestamp
         except:
+            # TODO: handle errors
             return
 
     def _save_state()
