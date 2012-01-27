@@ -87,16 +87,16 @@ class Darui (object):
         self.cfg = cfg
         self.results = { }
         self.report = ""
-        self.state = ""
+        self.state = { }
 
         # file to store feed states, defaults to "/var/tmp/[username].darui"
         try:
             filename = '.'.join(getuser(), "darui")
-            self.state_file = os.path.join(state_path, filename)
             self.use_state = True
+            self.state_file = os.path.join(state_path, filename)
         except:
-            self.state_file = ""
             self.use_state = False
+            self.state_file = ""
 
     def parse(self):
         """Parse rss feeds and try to match feed titles using regex"""
