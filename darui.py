@@ -18,6 +18,7 @@ import argparse
 from json import load
 from email.mime.text import MIMEText
 from datetime import datetime
+import time
 from getpass import getuser
 
 __version__ = "0.6"
@@ -79,20 +80,21 @@ def read_config(cfg_file = None):
 
 class Darui (object):
 
-    def __init__(self, cfg, state_path="/var/tmp"):
+    def __init__(self, cfg, ts_path="/var/tmp"):
         self.cfg = cfg
         self.results = { }
         self.report = ""
-        self.state = { }
+        self.ts_file = ""
+        self.last_checked = 0
 
-        # file to store feed states, defaults to "/var/tmp/[username].darui"
+        # file to store last time we parsed a feed
+        # default: /var/tmp/[username].darui
         try:
-            filename = '.'.join(getuser(), "darui")
-            self.use_state = True
-            self.state_file = os.path.join(state_path, filename)
+            filename = '.'.join((getuser(), "darui"))
+            self.ts_file = os.path.join(ts_path, filename)
+            self._read_ts()
         except:
-            self.use_state = False
-            self.state_file = ""
+            pass
 
     def parse(self):
         """Parse rss feeds and try to match feed titles using regex"""
@@ -118,6 +120,9 @@ class Darui (object):
                         self.results[pf.feed.title].append((entry.title, entry.link))
                     else:
                         self.results[pf.feed.title] = [(entry.title, entry.link)]
+
+        # parse done, save timestamp
+        self._save_ts()
 
     def print_results(self):
         self._build_report()
@@ -150,30 +155,21 @@ class Darui (object):
                     self.report = ''.join((self.report, ":: ", title, " [", url, "]\n"))
                 self.report = ''.join((self.report, "\n"))
 
-    def _read_state()
-        """read rss parsed timestamps into a dictionary"""
+    def _read_ts(self):
+        """read timestamp - represents the last time we parsed feeds"""
         try:
-            with open(self.state_file) as f:
-                for line in f:
-                    rss, timestamp = line.strip('\n').split(';')
-                    self.state[rss] = timestamp
+            with open(self.ts_file) as f:
+                self.last_checked = float(f.read().strip('\n'))
         except:
-            # TODO: handle errors
             return
 
-    def _save_state()
-        """save rss url and last parsed time
-
-        file format:
-            url;timestamp\n
-        """
+    def _save_ts(self):
+        """save timestamp"""
         try:
-            with open(self.state_file, 'w') as f:
-                for rss, timestamp in self.state.items():
-                    f.write(';'.join((rss, timestamp)))
-                    f.write('\n')
+            with open(self.ts_file, 'w') as f:
+                now = datetime.now().timetuple()
+                f.write(str(time.mktime(now)))
         except:
-            # TODO: handle errors
             return
 
 
