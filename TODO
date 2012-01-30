@@ -1,5 +1,5 @@
 * add support for YAML configuration files (low priority)
-* hold (somewhere) a .state file with feed dates to
-  avoid duplicate results in emails
 * maybe use a url shortener for links send in emails
 * add better error handling at email_results()
+* allow override of timestamp file path
+* add option to ignore last checked timestamp
