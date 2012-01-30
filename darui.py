@@ -101,6 +101,14 @@ class Darui (object):
         for feed in self.cfg['feeds']:
             pf = feedparser.parse(feed['rss'])
 
+            try:
+                # skip if checked last time
+                if self.last_checked >= time.mktime(pf.updated_parsed):
+                    continue
+            except (ValueError, KeyError, AttributeError):
+                # feed does not support the "updated" property, ignore
+                pass
+
             rules = ""
             if feed['rules']:
                 if len(feed['rules']) > 1:
